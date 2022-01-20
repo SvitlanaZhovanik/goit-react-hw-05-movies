@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'modern-normalize/modern-normalize.css';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
