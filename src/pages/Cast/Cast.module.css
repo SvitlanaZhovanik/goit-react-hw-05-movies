@@ -1,0 +1,21 @@
+.list {
+  margin-left: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media screen and (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+.item {
+  padding: 10px;
+}
+.accent {
+  display: block;
+  font-weight: 700;
+}
+.img {
+  width: 100px;
+  height: 150px;
+}

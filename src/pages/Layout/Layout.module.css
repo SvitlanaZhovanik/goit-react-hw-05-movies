@@ -1,0 +1,26 @@
+.section {
+  background-color: #fff;
+  width: 100vw;
+}
+
+@media screen and (min-width: 480px) {
+  .section {
+    width: 480px;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .section {
+    width: 660px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .section {
+    width: 960px;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .section {
+    width: 1200px;
+  }
+}

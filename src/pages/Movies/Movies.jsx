@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { searchMovies } from '../API/api';
-import Item from '../components/Item/Item';
-import SearchForm from '../components/SearchForm/SearchForm';
+import { searchMovies } from '../../API/api';
+import Item from '../../components/Item/Item';
+import SearchForm from '../../components/SearchForm/SearchForm';
+import { normalizeMovies } from '../../function/function';
+import s from './Movies.module.css';
 
 export default function Movies() {
   const [query, setQuery] = useState('');
@@ -12,15 +14,16 @@ export default function Movies() {
       return;
     }
     searchMovies(query)
-      .then(data => data.results)
+      .then(data => normalizeMovies(data.results))
       .then(setMovies);
   }, [query]);
+
   return (
-    <>
+    <div>
       <SearchForm onSubmit={setQuery} />
       {movies && (
         <>
-          <ul>
+          <ul className={s.list}>
             {movies.map(movie => {
               return (
                 <Item
@@ -35,6 +38,6 @@ export default function Movies() {
           <Outlet />
         </>
       )}
-    </>
+    </div>
   );
 }

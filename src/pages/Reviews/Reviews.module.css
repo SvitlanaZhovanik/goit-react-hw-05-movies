@@ -1,0 +1,10 @@
+.wrapper {
+  margin: 20px;
+  padding: 10px;
+}
+.accent {
+  font-weight: 700;
+}
+.text {
+  margin-bottom: 20px;
+}

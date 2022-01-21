@@ -1,0 +1,48 @@
+.wrapperFilm {
+  margin: 20px;
+}
+@media screen and (min-width: 768px) {
+  .wrapperFilm {
+    display: flex;
+    margin: 20px;
+  }
+}
+.wrapper {
+  padding: 20px 60px;
+  border-top: double;
+  border-bottom: double;
+  margin-bottom: 20px;
+}
+.button {
+  margin: 5px 20px;
+  padding: 10px;
+  background-color: #d910e0;
+  cursor: pointer;
+  transition: background-color 200ms linear 0s;
+  border-radius: 10px;
+  color: #fff;
+}
+.button:hover,
+.button:focus {
+  background-color: rgb(134, 16, 231);
+}
+.wrapperText {
+  margin: 10px;
+}
+.text {
+  font-weight: 700;
+}
+.item {
+  margin: 0 40px;
+  list-style-type: '\01F4FA';
+  padding: 5px;
+}
+.description {
+  margin-bottom: 10px;
+}
+.link {
+  margin-left: 30px;
+  text-decoration: none;
+  font-weight: 400;
+  color: inherit;
+}
