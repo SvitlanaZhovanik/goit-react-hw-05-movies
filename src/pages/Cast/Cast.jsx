@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getMovieCredits } from '../../API/api';
 import { normalizeCast } from '../../function/function';
 import s from './Cast.module.css';
+
 export default function Cast() {
   const [profiles, setProfiles] = useState([]);
   const { movieId } = useParams();

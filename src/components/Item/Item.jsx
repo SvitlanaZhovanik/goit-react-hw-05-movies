@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import s from './Item.module.css';
+import PropTypes from 'prop-types';
+
 const Item = ({ img, title, id }) => {
   return (
     <li className={s.item}>
@@ -11,5 +13,11 @@ const Item = ({ img, title, id }) => {
       </div>
     </li>
   );
+};
+
+Item.propTypes = {
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 export default Item;

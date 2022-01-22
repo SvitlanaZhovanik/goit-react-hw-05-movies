@@ -1,4 +1,5 @@
 import s from './SearchForm.module.css';
+import PropTypes from 'prop-types';
 import { normalizeQuery } from '../../function/function';
 import { toast } from 'react-toastify';
 
@@ -8,7 +9,7 @@ export default function SearchForm({ onSubmit }) {
     e.preventDefault();
     const normalizedQuery = normalizeQuery(value);
     if (!normalizedQuery) {
-      toast('😟 Ups, there is no movie ');
+      toast('😟 Ups, there is no movie. Enter, please your request');
       return;
     }
     onSubmit(normalizedQuery);
@@ -29,3 +30,6 @@ export default function SearchForm({ onSubmit }) {
     </form>
   );
 }
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
