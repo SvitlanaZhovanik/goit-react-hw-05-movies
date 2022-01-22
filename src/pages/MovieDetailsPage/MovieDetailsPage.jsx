@@ -4,8 +4,8 @@ import { getMovieDetails } from '../../API/api';
 import { normalizeMovie } from '../../function/function';
 import s from './MovieDetailsPage.module.css';
 import { css } from '@emotion/react';
-import CircleLoader from 'react-spinners/CircleLoader';
 import { toast } from 'react-toastify';
+import CircleLoader from 'react-spinners/CircleLoader';
 
 const Cast = lazy(() =>
   import('../Cast/Cast' /* webpackChunkName: "cast-page" */),
@@ -20,12 +20,16 @@ export default function MovieDetailsPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getMovieDetails(movieId)
-      .then(data => {
-        return normalizeMovie(data);
-      })
-      .then(setMovie)
-      .catch(toast('😟 Ups, there isn`t movie. Please click on "Go Back"'));
+    const fetchMovieDetails = async () => {
+      try {
+        const data = await getMovieDetails(movieId);
+        const normalizeData = normalizeMovie(data);
+        setMovie(normalizeData);
+      } catch (error) {
+        toast('😟 Ups, there isn`t movie. Enter, please "Go Back"');
+      }
+    };
+    fetchMovieDetails();
   }, [movieId]);
   const handleClick = () => {
     navigate(-1);

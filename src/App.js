@@ -28,7 +28,7 @@ const App = () => {
         <CircleLoader
           color={'#d910e0'}
           css={css`
-            margin: 45%;
+            margin: 30% 45%;
             display: block;
           `}
           size={150}
