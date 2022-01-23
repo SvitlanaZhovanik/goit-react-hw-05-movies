@@ -13,7 +13,7 @@
   border-bottom: double;
   margin-bottom: 20px;
 }
-.button {
+.linkGoBack {
   margin: 5px 20px;
   padding: 10px;
   background-color: #d910e0;
@@ -21,6 +21,7 @@
   transition: background-color 200ms linear 0s;
   border-radius: 10px;
   color: #fff;
+  text-decoration: none;
 }
 .button:hover,
 .button:focus {

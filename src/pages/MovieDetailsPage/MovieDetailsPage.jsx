@@ -1,4 +1,4 @@
-import { Link, Routes, Route, useParams, useNavigate } from 'react-router-dom';
+import { Link, Routes, Route, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { getMovieDetails } from '../../API/api';
 import { normalizeMovie } from '../../function/function';
@@ -17,7 +17,8 @@ const Reviews = lazy(() =>
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
-  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -31,16 +32,14 @@ export default function MovieDetailsPage() {
     };
     fetchMovieDetails();
   }, [movieId]);
-  const handleClick = () => {
-    navigate(-1);
-  };
+
   const { genres, overview, poster_path, title, release_date, vote_average } =
     movie;
   return (
     <>
-      <button className={s.button} type="button" onClick={handleClick}>
-        &#x2B05;&#xFE0F; Go back
-      </button>
+      <Link className={s.linkGoBack} to={location?.state?.from ?? '/'}>
+        &lArr; Go back
+      </Link>
       <div className={s.wrapperFilm}>
         <img src={poster_path} alt={`Poster for ${title}`} />
         <div className={s.wrapperText}>
@@ -71,12 +70,20 @@ export default function MovieDetailsPage() {
         <h3>Additional information:</h3>
         <ul>
           <li>
-            <Link className={s.link} to="cast">
+            <Link
+              className={s.link}
+              to="cast"
+              state={{ from: location?.state?.from ?? '/' }}
+            >
               Cast
             </Link>
           </li>
           <li>
-            <Link className={s.link} to="reviews">
+            <Link
+              className={s.link}
+              to="reviews"
+              state={{ from: location?.state?.from ?? '/' }}
+            >
               Reviews
             </Link>
           </li>
