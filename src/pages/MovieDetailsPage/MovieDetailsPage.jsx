@@ -18,7 +18,6 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
   const location = useLocation();
-  console.log(location);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
