@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getMovieCredits } from '../../API/api';
 import { normalizeCast } from '../../function/function';
 import s from './Cast.module.css';
+import { toast } from 'react-toastify';
 
 export default function Cast() {
   const [profiles, setProfiles] = useState([]);
@@ -10,7 +11,8 @@ export default function Cast() {
   useEffect(() => {
     getMovieCredits(movieId)
       .then(data => normalizeCast(data.cast))
-      .then(setProfiles);
+      .then(setProfiles)
+      .catch(() => toast('😟 Ups, not found'));
   }, [movieId]);
   return (
     <div>

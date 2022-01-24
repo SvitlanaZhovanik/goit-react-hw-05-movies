@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getMovieReviews } from '../../API/api';
 import { normalizeReviews } from '../../function/function';
 import s from './Reviews.module.css';
+import { toast } from 'react-toastify';
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -10,7 +11,8 @@ export default function Reviews() {
   useEffect(() => {
     getMovieReviews(movieId)
       .then(data => normalizeReviews(data.results))
-      .then(setReviews);
+      .then(setReviews)
+      .catch(() => toast('😟 Ups, not found'));
   }, [movieId]);
   return (
     <div className={s.wrapper}>

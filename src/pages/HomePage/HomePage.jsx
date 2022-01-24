@@ -1,32 +1,25 @@
 import { useState, useEffect } from 'react';
 import { getTrending } from '../../API/api';
-import Item from '../../components/Item/Item';
+import { useLocation } from 'react-router-dom';
 import { normalizeMovies } from '../../function/function';
 import s from './HomePage.module.css';
+import { toast } from 'react-toastify';
+import List from '../../components/List/List';
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
+
   useEffect(() => {
     getTrending()
       .then(data => normalizeMovies(data.results))
-      .then(setMovies);
+      .then(setMovies)
+      .catch(() => toast('😟 Ups, not found'));
   }, []);
   return (
     <>
       <h1 className={s.text}>Trending for the week</h1>
-      <ul className={s.list}>
-        {movies &&
-          movies.map(movie => {
-            return (
-              <Item
-                key={movie.id}
-                img={movie.poster_path}
-                title={movie.title}
-                id={movie.id}
-              />
-            );
-          })}
-      </ul>
+      <List movies={movies} location={location} />
     </>
   );
 }

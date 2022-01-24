@@ -1,5 +1,14 @@
 .item {
-  width: 270px;
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .item {
+    width: 270px;
+  }
+  .img {
+    width: 230px;
+    height: 345px;
+  }
 }
 .wrapper {
   margin: 20px;
@@ -13,7 +22,7 @@
   padding: 15px;
   text-align: center;
 }
+
 .img {
-  width: 230px;
-  height: 345px;
+  width: 100%;
 }

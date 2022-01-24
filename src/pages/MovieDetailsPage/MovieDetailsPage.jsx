@@ -8,10 +8,12 @@ import { toast } from 'react-toastify';
 import CircleLoader from 'react-spinners/CircleLoader';
 
 const Cast = lazy(() =>
-  import('../Cast/Cast' /* webpackChunkName: "cast-page" */),
+  import('../../components/Cast/Cast' /* webpackChunkName: "cast-page" */),
 );
 const Reviews = lazy(() =>
-  import('../Reviews/Reviews' /* webpackChunkName: "reviews-page" */),
+  import(
+    '../../components/Reviews/Reviews' /* webpackChunkName: "reviews-page" */
+  ),
 );
 
 export default function MovieDetailsPage() {

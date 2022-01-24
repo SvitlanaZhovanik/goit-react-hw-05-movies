@@ -4,7 +4,7 @@ import CircleLoader from 'react-spinners/CircleLoader';
 import { css } from '@emotion/react';
 
 const Layout = lazy(() =>
-  import('./pages/Layout/Layout' /* webpackChunkName: "layout-page" */),
+  import('./components/Layout/Layout' /* webpackChunkName: "layout-page" */),
 );
 const HomePage = lazy(() =>
   import('./pages/HomePage/HomePage' /* webpackChunkName: "home-page" */),
@@ -16,9 +16,6 @@ const MovieDetailsPage = lazy(() =>
   import(
     './pages/MovieDetailsPage/MovieDetailsPage' /* webpackChunkName: "movieDetailsPage-page" */
   ),
-);
-const NotfoundPage = lazy(() =>
-  import('./pages/NotfoundPage' /* webpackChunkName: "notfound-page" */),
 );
 
 const App = () => {
@@ -40,7 +37,7 @@ const App = () => {
           <Route path="movies" element={<Movies />} />
           <Route path="movies/:movieId/*" element={<MovieDetailsPage />} />
           <Route index element={<HomePage />} />
-          <Route path="*" element={<NotfoundPage />} />
+          <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>
     </Suspense>
