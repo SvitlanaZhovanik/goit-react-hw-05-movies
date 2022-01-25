@@ -1,6 +1,8 @@
 import s from './List.module.css';
 import Item from '../Item/Item';
-export default function List({ movies, location }) {
+import PropTypes from 'prop-types';
+
+export default function List({ movies, url, location }) {
   return (
     <ul className={s.list}>
       {movies &&
@@ -18,3 +20,7 @@ export default function List({ movies, location }) {
     </ul>
   );
 }
+List.propTypes = {
+  movies: PropTypes.array.isRequired,
+  location: PropTypes.object.isRequired,
+};

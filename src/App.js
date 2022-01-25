@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { css } from '@emotion/react';
 
@@ -34,10 +34,10 @@ const App = () => {
     >
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="movies" element={<Movies />} />
           <Route path="movies/:movieId/*" element={<MovieDetailsPage />} />
+          <Route path="movies" element={<Movies />} />
           <Route index element={<HomePage />} />
-          <Route path="*" element={<HomePage />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
     </Suspense>
