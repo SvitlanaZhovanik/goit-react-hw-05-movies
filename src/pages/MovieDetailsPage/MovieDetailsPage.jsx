@@ -20,6 +20,7 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
   const location = useLocation();
+  const goBackUrl = location?.state?.from ?? '/';
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -38,7 +39,7 @@ export default function MovieDetailsPage() {
     movie;
   return (
     <>
-      <Link className={s.linkGoBack} to={location?.state?.from ?? '/'}>
+      <Link className={s.linkGoBack} to={goBackUrl}>
         &lArr; Go back
       </Link>
       <div className={s.wrapperFilm}>
@@ -71,20 +72,12 @@ export default function MovieDetailsPage() {
         <h3>Additional information:</h3>
         <ul>
           <li>
-            <Link
-              className={s.link}
-              to="cast"
-              state={{ from: location?.state?.from ?? '/' }}
-            >
+            <Link className={s.link} to="cast" state={{ from: goBackUrl }}>
               Cast
             </Link>
           </li>
           <li>
-            <Link
-              className={s.link}
-              to="reviews"
-              state={{ from: location?.state?.from ?? '/' }}
-            >
+            <Link className={s.link} to="reviews" state={{ from: goBackUrl }}>
               Reviews
             </Link>
           </li>
